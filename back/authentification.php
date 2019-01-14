@@ -13,6 +13,10 @@ if (sizeof($_POST) != 0) {
             // Connexion OK
             $monRetour['statut'] = true;
             $monRetour['message'] = "Connexion OK !";
+            
+            // Lancement de la session
+            session_start();
+            $_SESSION["connected"] = true;
         } else {
             // Connexion KO
             $monRetour['statut'] = false;
