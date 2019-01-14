@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  lun. 14 jan. 2019 à 15:50
--- Version du serveur :  10.1.36-MariaDB
--- Version de PHP :  7.2.11
+-- Généré le :  lun. 14 jan. 2019 à 16:11
+-- Version du serveur :  10.1.37-MariaDB
+-- Version de PHP :  7.3.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,8 +19,10 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `projet-scrum`
+-- Base de données :  `aubergine`
 --
+CREATE DATABASE IF NOT EXISTS `aubergine` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `aubergine`;
 
 -- --------------------------------------------------------
 
@@ -28,6 +30,7 @@ SET time_zone = "+00:00";
 -- Structure de la table `events`
 --
 
+DROP TABLE IF EXISTS `events`;
 CREATE TABLE `events` (
   `Id` int(11) NOT NULL,
   `BeginDate` date NOT NULL,
@@ -43,6 +46,7 @@ CREATE TABLE `events` (
 -- Structure de la table `events_users`
 --
 
+DROP TABLE IF EXISTS `events_users`;
 CREATE TABLE `events_users` (
   `Id_event` int(11) NOT NULL,
   `Id_user` int(11) NOT NULL
@@ -54,6 +58,7 @@ CREATE TABLE `events_users` (
 -- Structure de la table `files`
 --
 
+DROP TABLE IF EXISTS `files`;
 CREATE TABLE `files` (
   `Id` int(11) NOT NULL,
   `Name` varchar(255) COLLATE utf8_bin NOT NULL,
@@ -67,6 +72,7 @@ CREATE TABLE `files` (
 -- Structure de la table `groups`
 --
 
+DROP TABLE IF EXISTS `groups`;
 CREATE TABLE `groups` (
   `Id` int(11) NOT NULL,
   `Name` varchar(255) COLLATE utf8_bin NOT NULL
@@ -78,6 +84,7 @@ CREATE TABLE `groups` (
 -- Structure de la table `groups_users`
 --
 
+DROP TABLE IF EXISTS `groups_users`;
 CREATE TABLE `groups_users` (
   `Id` int(11) NOT NULL,
   `Id_user` int(11) NOT NULL,
@@ -90,6 +97,7 @@ CREATE TABLE `groups_users` (
 -- Structure de la table `notes`
 --
 
+DROP TABLE IF EXISTS `notes`;
 CREATE TABLE `notes` (
   `Id` int(11) NOT NULL,
   `Name` varchar(255) COLLATE utf8_bin NOT NULL,
@@ -103,6 +111,7 @@ CREATE TABLE `notes` (
 -- Structure de la table `users`
 --
 
+DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `Id` int(11) NOT NULL,
   `Lastname` varchar(255) COLLATE utf8_bin NOT NULL,
@@ -199,7 +208,7 @@ ALTER TABLE `notes`
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Contraintes pour les tables déchargées
