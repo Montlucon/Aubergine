@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Gestion de l'authentification des utilisateurs
+ */
+
 require_once('./class/user.php');
 
 if (sizeof($_POST) != 0) {
