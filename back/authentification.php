@@ -9,7 +9,7 @@ require_once('./class/user.php');
 if (sizeof($_POST) != 0) {
     if (isset($_POST["username"]) && isset($_POST["password"])) {
         $myUser = new user();
-        $testConnexion = $myUser->verifierConnexion($_POST["username"], $_POST["password"]);
+        $testConnexion = $myUser->checkCredentials($_POST["username"], $_POST["password"]);
 
         $myReturn = [];
 
