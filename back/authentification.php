@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Gestion de l'authentification des utilisateurs
+ * BACK - Manage user authentication
  */
 
 require_once('./class/user.php');
@@ -18,13 +18,13 @@ if (sizeof($_POST) != 0) {
             $monRetour['status'] = true;
             $monRetour['message'] = "Connexion OK !";
             
-            // Lancement de la session
+            // Session launch
             session_start();
             $_SESSION["connected"] = true;
         } else {
             // Connexion KO
             $monRetour['status'] = false;
-            $monRetour['message'] = "Connexion échouée ! Vérifiez vos identifiants !";
+            $monRetour['message'] = "Connexion failed ! Check your credentials !";
         }
         
         echo json_encode($monRetour);
