@@ -5,6 +5,8 @@
  *
  * @author Anael
  */
+require_once 'maBDD.php';
+
 class user {
 
     /**
@@ -14,13 +16,15 @@ class user {
      * @return boolean connexion réussie ?
      */
     public function verifierConnexion($login, $password) {
-        $retour = false;
-
         // Vérification des identifiants fournis
-        if ($login === "test" && $password == "test") {
-            // Connexion OK
-            $retour = true;
-        }
+        $req = maBDD::getInstance()->prepare("SELECT * FROM users WHERE Email = :login AND Password = :password");
+        $req->bindValue(':login', $login, PDO::PARAM_STR);
+        $req->bindValue(':password', $password, PDO::PARAM_STR);
+        $req->execute();
+
+        // Récupération des datas
+        $retour = $req->fetch();
+        // FALSE ou datas => TRUE grâce à PHP :-)
 
         return $retour;
     }
