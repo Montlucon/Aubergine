@@ -11,7 +11,7 @@ if (sizeof($_POST) != 0) {
 
         if ($testConnexion) {
             // Connexion OK
-            $monRetour['statut'] = true;
+            $monRetour['status'] = true;
             $monRetour['message'] = "Connexion OK !";
             
             // Lancement de la session
@@ -19,7 +19,7 @@ if (sizeof($_POST) != 0) {
             $_SESSION["connected"] = true;
         } else {
             // Connexion KO
-            $monRetour['statut'] = false;
+            $monRetour['status'] = false;
             $monRetour['message'] = "Connexion échouée ! Vérifiez vos identifiants !";
         }
         
