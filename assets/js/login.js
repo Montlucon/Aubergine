@@ -17,7 +17,7 @@ $(document).ready(function(){
 					document.location.href="index.html";
 				} else {
 					$('input[type="text"]').css({"border":"2px solid red","box-shadow":"0 0 3px red"});
-					$('input[type="password"]').css({"border":"2px solid #00F5FF","box-shadow":"0 0 5px #00F5FF"});
+					$('input[type="password"]').css({"border":"2px solid red","box-shadow":"0 0 3px red"});
 					console.log(oData);
 					alert(oData.message);
 				}
