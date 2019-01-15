@@ -9,11 +9,11 @@ require_once __DIR__ . '/maBDD.php';
 
 class event {
 
-    private $id;
-    private $date;
-    private $title;
-    private $description;
-    private $isImportante;
+    public $id;
+    public $date;
+    public $title;
+    public $description;
+    public $isImportante;
 
     /**
      * Get event by ID

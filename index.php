@@ -34,13 +34,12 @@ if(!isset($_SESSION["connected"])) {
 			require('back/class/event.php');
 			$datas = new event();
 
-			foreach ($datas->getAllEvents() as $unEvent){
-			echo ' <span id="'. $unEvent->getId().'" class="dateSaved '.$unEvent->getdate().'" style="display: none">
-						'. $unEvent->getDescription() .'
+			foreach ($datas->getAllEvents() as $unEvent) {
+                    echo ' <span id="' . $unEvent->getId() . '" class="dateSaved ' . $unEvent->getdate() . '" style="display: none" title="' . $unEvent->getTitle() . '">
+						' . $unEvent->getDescription() . '
 				   </span>';
-		 
-			}
-		?>
+                }
+                ?>
                 <div class="modal" id="eventToAdd" tabindex="-1" role="dialog">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">

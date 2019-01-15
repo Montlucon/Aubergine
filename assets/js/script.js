@@ -44,15 +44,17 @@ $(document).ready(function() {
                 url: 'back/eventAPI.php',
                 data: ({
                 	function: 'create',
-					date : date.val(),
+					date : dateValue,
 					title : title.val(),
 					description : description.val(),
-					important : $("#important").is(":checked")
+					important : $("#important").is(":checked") ? 1 : 0
                 }),
                 dataType: "html",
                 success: function(data) {
-					// display data
-					console.log(data);
+                                        // Dismiss modal
+                                        $("#eventToAdd").hide();
+                                        // reload page
+                                        location.reload();
                 },
                 error: function() {
                     console.log("error !!!!!");
@@ -60,4 +62,25 @@ $(document).ready(function() {
             });
 		}
 	});
+        
+    // Gestion de l'update
+    $(".scheduled > div").click(function () {
+        // Récupération de la date courante
+        var regExp = /[\d]*-[\d]*-[\d]*/g;
+        var matches = regExp.exec(this.id);
+
+        // Récupération de l'élément avec la classe à notre date
+        var monRdv = $("." + matches[0]);
+        console.log(monRdv);
+
+        // Insertion des valeurs dans la modal
+        $("#dateOfEvent").val("matches[0]");
+        $("#descriptionOfEvent").val(monRdv[0].textContent.trim());
+        $("#titleOfEvent").val(monRdv[0].title);
+        // TODO
+        $("#important").val("");
+        // TODO
+        $("#guest").val("");
+        
+    });
 });
