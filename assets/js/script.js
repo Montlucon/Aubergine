@@ -37,7 +37,8 @@ $(document).ready(function() {
                 }),
                 dataType: "html",
                 success: function(data) {
-                    // display data
+					// display data
+					console.log(data);
                 },
                 error: function() {
                     console.log("error !!!!!");

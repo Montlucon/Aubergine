@@ -5,7 +5,7 @@
  *
  * @author Anael
  */
-require_once 'maBDD.php';
+require_once __DIR__ . '/maBDD.php';
 
 class user {
 
@@ -55,6 +55,17 @@ class user {
 
     function setPassword($password) {
         $this->password = $password;
+    }
+
+    public function getUsers() {
+        $req = maBDD::getInstance()->prepare("SELECT Id, Username FROM users");
+        $req->execute();
+
+        // Fetch datas
+        $retour = $req->fetch();
+        // FALSE or datas => TRUE due to PHP :-)
+
+        return $retour;
     }
 
 }

@@ -1,6 +1,6 @@
 <?php
 
-require_once './class/maBDD.php';
+require_once __DIR__ . '/class/maBDD.php';
 
 /**
  * User registration management
