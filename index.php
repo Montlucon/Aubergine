@@ -1,8 +1,8 @@
 <?php
-if(!isset($_SESSION['connected']))
-{
-    header("location:login.html");
-}
+// die(var_dump($_SESSION));
+// if(!sset($_SESSION["connected"])) {
+// 	header("location:login.html");
+// }
 ?>
 <html>
 <head>
