@@ -60,4 +60,26 @@ $(document).ready(function() {
             });
 		}
 	});
+        
+    // Gestion de l'update
+    $(".scheduled > div").click(function () {
+        // Récupération de la date courante
+        var regExp = /[\d]*-[\d]*-[\d]*/g;
+        var matches = regExp.exec(this.id);
+
+        // Récupération de l'élément avec la classe à notre date
+        var monRdv = $("." + matches[0]);
+        console.log(monRdv);
+
+        // Insertion des valeurs dans la modal
+        $("#dateOfEvent").val("matches[0]");
+        $("#titleOfEvent").val(monRdv[0].textContent.trim());
+        // TODO
+        $("#descriptionOfEvent").val("");
+        // TODO
+        $("#important").val("");
+        // TODO
+        $("#important").val("");
+        
+    });
 });
