@@ -75,13 +75,12 @@ $(document).ready(function() {
 
         // Insertion des valeurs dans la modal
         $("#dateOfEvent").val("matches[0]");
-        $("#titleOfEvent").val(monRdv[0].textContent.trim());
-        // TODO
-        $("#descriptionOfEvent").val("");
-        // TODO
-        $("#important").val("");
+        $("#descriptionOfEvent").val(monRdv[0].textContent.trim());
+        $("#titleOfEvent").val(monRdv[0].title);
         // TODO
         $("#important").val("");
+        // TODO
+        $("#guest").val("");
         
     });
 });
