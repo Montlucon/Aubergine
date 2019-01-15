@@ -47,7 +47,7 @@ $(document).ready(function() {
 					date : dateValue,
 					title : title.val(),
 					description : description.val(),
-					important : $("#important").is(":checked")
+					important : $("#important").is(":checked") ? 1 : 0
                 }),
                 dataType: "html",
                 success: function(data) {
