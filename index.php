@@ -1,3 +1,9 @@
+<?php
+if(!isset($_SESSION['connected']))
+{
+    header("location:login.html");
+}
+?>
 <html>
 <head>
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
