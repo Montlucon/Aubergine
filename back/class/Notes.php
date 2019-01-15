@@ -18,7 +18,6 @@ class Notes
     /**
      * Get event by ID
      * @param int $id
-     * @return event Event
      */
     public function get($id) {
         // Je vais chercher les infos en BDD
@@ -37,6 +36,13 @@ class Notes
         }
     }
 
+    /**
+     * Create a note link to an Id_User and a Id_Event
+     * @param $name
+     * @param $content
+     * @param $idEvent
+     * @param $idUser
+     */
     public function addNote($name, $content, $idEvent, $idUser) {
         $req = maBDD::getInstance()->prepare("INSERT INTO notes(Name, Content, Id_event, Id_user) VALUES 
                                               (:Name, :Content, :Id_event, :Id_user)");
@@ -44,6 +50,35 @@ class Notes
         $req->bindValue(':Content', $content, PDO::PARAM_STR);
         $req->bindValue(':Id_event', $idEvent, PDO::PARAM_INT);
         $req->bindValue(':Id_user', $idUser, PDO::PARAM_INT);
+        $req->execute();
+    }
+
+    /**
+     * Update a Note with new data where Id = $id
+     * @param $id
+     * @param $name
+     * @param $content
+     * @param $idEvent
+     * @param $idUser
+     */
+    public function updateNote($id, $name, $content, $idEvent, $idUser) {
+        $req = maBDD::getInstance()->prepare("UPDATE notes SET Name = :Name AND Content = :Content
+                          AND Id_event = :Id_event AND Id_user = :Id_user WHERE Id = :Id");
+        $req->bindValue(':Id', $id, PDO::PARAM_INT);
+        $req->bindValue(':Name', $name, PDO::PARAM_STR);
+        $req->bindValue(':Content', $content, PDO::PARAM_STR);
+        $req->bindValue(':Id_event', $idEvent, PDO::PARAM_INT);
+        $req->bindValue(':Id_user', $idUser, PDO::PARAM_INT);
+        $req->execute();
+    }
+
+    /**
+     * Delete the note by is Id
+     * @param $id
+     */
+    public function deleteNote($id) {
+        $req = maBDD::getInstance()->prepare("DELETE FROM notes WHERE Id = :Id");
+        $req->bindValue(':Id', $id, PDO::PARAM_INT);
         $req->execute();
     }
 
