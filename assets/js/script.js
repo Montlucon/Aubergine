@@ -44,15 +44,17 @@ $(document).ready(function() {
                 url: 'back/eventAPI.php',
                 data: ({
                 	function: 'create',
-					date : date.val(),
+					date : dateValue,
 					title : title.val(),
 					description : description.val(),
 					important : $("#important").is(":checked")
                 }),
                 dataType: "html",
                 success: function(data) {
-					// display data
-					console.log(data);
+                                        // Dismiss modal
+                                        $("#eventToAdd").hide();
+                                        // reload page
+                                        location.reload();
                 },
                 error: function() {
                     console.log("error !!!!!");
