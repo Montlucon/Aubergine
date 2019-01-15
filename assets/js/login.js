@@ -14,7 +14,7 @@ $(document).ready(function(){
 				if(oData.status == true){
 					$("form")[0].reset();
 					console.log(oData);
-					document.location.href="index.html";
+					document.location.href="index.php";
 				} else {
 					$('input[type="text"]').css({"border":"2px solid red","box-shadow":"0 0 3px red"});
 					$('input[type="password"]').css({"border":"2px solid red","box-shadow":"0 0 3px red"});
