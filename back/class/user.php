@@ -63,10 +63,10 @@ class user {
 
         $retour = new ArrayObject();
         // Pour chaque résultat retourné
-        foreach ($resultat->fetchAll() as $value) {
+        foreach ($req->fetchAll() as $value) {
             $user = new user();
-            $user->setId($resultat->Id);
-            $user->setDate($resultat->Username);
+            $user->setId($value->Id);
+            $user->setUSername($value->Username);
            // J'ajoute le nom de l'image
            $retour->append($user);
         }
