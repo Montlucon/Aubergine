@@ -77,4 +77,13 @@ class event {
         $this->isImportante = $isImportante;
     }
 
+
+    public function addEvent($title, $description, $date, $isImportante) {
+
+        $req = maBDD::getInstance()->prepare("INSERT INTO events('Date', 'Title', 'Description', 'IsImportant') VALUES 
+                                              ('Date', 'Title', 'Description', 'IsImportant') WHERE ");
+        $req->bindValue(':login', $login, PDO::PARAM_STR);
+        $req->bindValue(':password', $password, PDO::PARAM_STR);
+        $req->execute();
+    }
 }
