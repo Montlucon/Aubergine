@@ -111,16 +111,16 @@ class event {
         $req->execute();
     }
 
-    public function UpdateEvent($id, $title, $description, $date, $isImportante) {
+    public function updateEvent($id, $title, $description, $date, $isImportante) {
         
-        $req = maBDD::getInstance()->prepare("UPDATE events(Date, Title, Description, IsImportant) 
-                                              SET Date = :Date, Title = :Title, Description = :Description, IsImportant = :IsImportant
-                                              WHERE Id = :id");
+        $req = maBDD::getInstance()->prepare("UPDATE events
+                                              SET Date = :Date AND Title = :Title AND Description = :Description AND IsImportant = :IsImportant
+                                              WHERE Id = :Id");
+        $req->bindValue(':Id', $id, PDO::PARAM_STR);
         $req->bindValue(':Date', $date, PDO::PARAM_STR);
         $req->bindValue(':Title', $title, PDO::PARAM_STR);
         $req->bindValue(':Description', $description, PDO::PARAM_STR);
         $req->bindValue(':IsImportant', $isImportante, PDO::PARAM_STR);
-        $req->bindValue(':Id', $id, PDO::PARAM_STR);
         $req->execute();
     }
 
