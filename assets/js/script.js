@@ -1,15 +1,20 @@
 $(document).ready(function() {
-	$(".EventToAdd").hide();
+    // Hide modal on click on close button - add event
+    $("#closeModal").on("click", function () {
+        $("#eventToAdd").hide();
+    });
+    
+	$("#eventToAdd").hide();
 	$("#my-calendar").zabuto_calendar({language: "en"});
 
 	$(".zabuto_calendar .calendar-dow td").on("click", function(){
 		// alert($(this).attr("id"));
 		$(this).addClass("toPlan");
-		$(".eventToAdd").show().find("#dateOfEvent").attr("val", $(this).attr("id"));
+		$("#eventToAdd").show().find("#dateOfEvent").attr("val", $(this).attr("id"));
 	})
 
-	$(".eventToAdd").on("submit", function(){
-		$(".eventToAdd").hide();
+	$("#eventToAdd").on("submit", function(){
+		$("#eventToAdd").hide();
 	});
 
 	var currentPrint = $( "div[id^='zabuto_calendar_']" ).first().attr("id").split("zabuto_calendar_")[1];

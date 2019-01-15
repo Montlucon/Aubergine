@@ -42,29 +42,37 @@ if(!isset($_SESSION["connected"])) {
 		 
 			}
 		?>
-		<div class="eventToAdd">
-			<input type="hidden" id="dateOfEvent" name="dateOfEvent"><br>
-			<label for="titleOfEvent">Title of the event</label><br>
-			<input type="text" id="titleOfEvent" name="titleOfEvent"><br><br>
-			<label for="descriptionOfEvent">Description</label><br>
-			<input type="text" id="descriptionOfEvent" name="descriptionOfEvent"><br><br>
-			<label for="guestsOfEvent">Guests</label><br>
-			<select id="guestsOfEvent" name="guestsOfEvent" multiple>
-			<?php 
-			require('back/class/user.php');
-			$datas = new user();
+                <div class="modal" id="eventToAdd" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Modal title</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="closeModal">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <input type="hidden" id="dateOfEvent" name="dateOfEvent"><br>
+                                <label for="titleOfEvent">Title of the event</label><br>
+                                <input type="text" id="titleOfEvent" name="titleOfEvent"><br><br>
+                                <label for="descriptionOfEvent">Description</label><br>
+                                <input type="text" id="descriptionOfEvent" name="descriptionOfEvent"><br><br>
+                                <label for="guestsOfEvent">Guests</label><br>
+                                <select id="guestsOfEvent" name="guestsOfEvent" multiple>
+                                    <option id="Prenom1" value="Prenom1">Prenom1</option>
+                                    <option id="Prenom2" value="Prenom2">Prenom2</option>
+                                    <option id="Prenom3" value="Prenom3">Prenom3</option>
+                                </select><br><br>
+                                <label for="important">Is important</label>
+                                <input type="checkbox" id="important" name="important"><br><br>
 
-			foreach ($datas->getUsers() as $user){
-			echo ' <option id="'. $user->getId().'">
-						' .$user->getUsername().'
-				   </option>';
-			}
-		?>
-		</select><br><br>			
-			<label for="important">Is important</label>
-			<input type="checkbox" id="important" name="important"><br><br>
-			<button class="btn btn-success" id="add_event_btn"></button>
-		</div>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-success" id="add_event_btn">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 	</section>
 </body>
 </html>
