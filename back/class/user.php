@@ -9,6 +9,10 @@ require_once 'maBDD.php';
 
 class user {
 
+    private $id;
+    private $username;
+    private $password;
+
     /**
      * Check user credentials
      * @param string $login
@@ -27,6 +31,30 @@ class user {
         // FALSE or datas => TRUE due to PHP :-)
 
         return $retour;
+    }
+
+    function getId() {
+        return $this->id;
+    }
+
+    function setId($id) {
+        $this->id = $id;
+    }
+
+    function getUsername() {
+        return $this->username;
+    }
+
+    function setUSername($username) {
+        $this->username = $username;
+    }
+
+    function getPassword() {
+        return $this->password;
+    }
+
+    function setPassword($password) {
+        $this->password = $password;
     }
 
 }
