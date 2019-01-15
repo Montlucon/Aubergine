@@ -19,11 +19,14 @@
 </head>
 <body>
 	<section class="mainSection">
+		<?php
+			
+		?>
 		<h2>My calendar</h2>
 		<p>Hi guys ! This is your dashboard. From this place, you will be able to check your weekly planning, add new events, and add people to your events ! <br>
 			<b>Enjoy !</b>
 		</p>
-		<div id="my-calendar"></div>
+		<div id="my-calendar"><?php echo "<span class='dateSaved zabuto_calendar_10k_"+$result->getDate()+"_day'>Exposition - Grenoble - 16h</span>"?></div>
 		<div class="eventToAdd">
 			<form action="index.php" method="post">
 				<input type="hidden" id="dateOfEvent" name="dateOfEvent"><br>
@@ -32,13 +35,13 @@
 				<label for="descriptionOfEvent">Description</label><br>
 				<input type="text" id="descriptionOfEvent" name="descriptionOfEvent"><br><br>
 				<label for="guestsOfEvent">Guests</label><br>
-				<select id="guestsOfEvent" name="guestsOfEvent">
-					<option value="1">1</option>
-					<option value="2">2</option>
-					<option value="3">3</option>
+				<select id="guestsOfEvent" name="guestsOfEvent" multiple>
+					<option id="Prenom1" value="Prenom1">Prenom1</option>
+					<option id="Prenom2" value="Prenom2">Prenom2</option>
+					<option id="Prenom3" value="Prenom3">Prenom3</option>
 				</select><br>
 				<label for="priorityOfEvent">Priority</label><br>
-				<input type="number" id="priorityOfEvent" name="priorityOfEvent"><br><br>
+				<input type="number" id="priorityOfEvent" name="priorityOfEvent" min="1" max="3"><br><br>
 				<input type="submit">
 			</form>
 		</div>
