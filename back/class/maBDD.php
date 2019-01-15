@@ -18,7 +18,7 @@
  * along with image-heberg.fr. If not, see <http://www.gnu.org/licenses/>
  */
 
-require_once 'back/config/config.php';
+require_once 'config/config.php';
 
 /**
  * Lien vers la BDD
