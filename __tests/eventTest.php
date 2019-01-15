@@ -46,10 +46,9 @@ class eventTest extends TestCase {
     public function testGetEvent() {
         require 'back/class/event.php';
 
-        /** @var event $monEvent */
-        $monEvent = event();
+        $monEvent = new event();
         $monEvent->get(1);
-
+        
         /**
          * Vérification des valeurs
          */
