@@ -5,7 +5,7 @@
  *
  * @author Anael
  */
-require_once 'maBDD.php';
+require_once __DIR__ . '/maBDD.php';
 
 class user {
 
