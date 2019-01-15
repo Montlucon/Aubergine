@@ -37,13 +37,26 @@ class event {
         }
     }
 
-    public function getEventsMonth() {
+    public function getAllEvents() {
         // Je vais chercher les infos en BDD
-        $req = maBDD::getInstance()->prepare("SELECT * FROM `events` WHERE Date < "2019-02-15" ");
-        $req->bindValue(':id', $id, PDO::PARAM_INT);
+        $req = maBDD::getInstance()->prepare("SELECT * FROM `events`");
         $req->execute();
+        
+        $retour = new ArrayObject();
+        // Pour chaque résultat retourné
+        foreach ($resultat->fetchAll() as $value) {
+            $monEvent = new event();
+            $monEvent->setId($resultat->Id);
+            $monEvent->setDate($resultat->Date);
+            $monEvent->setTitle($resultat->Title);
+            $monEvent->setDescription($resultat->Description);
+            $monEvent->setIsImportante($resultat->isImportant);
 
-        $resultat = $req->fetch();
+           // J'ajoute le nom de l'image
+           $retour->append($monEvent);
+        }
+        
+        return $retour;
     }
 
     function getId() {

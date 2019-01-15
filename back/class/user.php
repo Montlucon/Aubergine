@@ -61,9 +61,15 @@ class user {
         $req = maBDD::getInstance()->prepare("SELECT Id, Username FROM users");
         $req->execute();
 
-        // Fetch datas
-        $retour = $req->fetch();
-        // FALSE or datas => TRUE due to PHP :-)
+        $retour = new ArrayObject();
+        // Pour chaque résultat retourné
+        foreach ($resultat->fetchAll() as $value) {
+            $user = new user();
+            $user->setId($resultat->Id);
+            $user->setDate($resultat->Username);
+           // J'ajoute le nom de l'image
+           $retour->append($user);
+        }
 
         return $retour;
     }
