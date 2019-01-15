@@ -1,10 +1,29 @@
 /* Below line is used for online Google font */
 @import url(http://fonts.googleapis.com/css?family=Droid+Serif);
 
+@font-face {
+  	font-family: polythem;
+  	src: url('../font/Polythem.ttf');
+}
+
+.div-title {
+	margin: 10px auto;
+}
+
+.title {
+	font-family: polythem;
+	margin: auto 10px;
+}
+
 #login-container {
 	margin: 50px 0;
 }
 
 .link {
 	margin: 0 5px;
+}
+
+.aubergine-img {
+	max-width: 200px;
+	max-height: 200px;
 }
