@@ -5,15 +5,15 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 	<!--<script type="text/javascript" src="./scripts/calendar.js"></script>-->
 	
-	<script src="./scripts/zabuto_calendar.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="./styles/zabuto_calendar.min.css">
+	<script src="./assets/js/zabuto_calendar.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="./assets/css/zabuto_calendar.min.css">
 
 
-	<script type="text/javascript" src="./scripts/script.js"></script>
+	<script type="text/javascript" src="./assets/js/script.js"></script>
 
 	<link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-	<link rel="stylesheet" href="./styles/style.css">
+	<link rel="stylesheet" href="./assets/css/style.css">
 	<!--<link rel="stylesheet" href="./styles/calendar.css">-->
 	<title>Calendar - Aubergines</title>
 </head>
