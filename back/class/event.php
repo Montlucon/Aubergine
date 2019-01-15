@@ -37,6 +37,15 @@ class event {
         }
     }
 
+    public function getEventsMonth() {
+        // Je vais chercher les infos en BDD
+        $req = maBDD::getInstance()->prepare("SELECT * FROM `events` WHERE Date < "2019-02-15" ");
+        $req->bindValue(':id', $id, PDO::PARAM_INT);
+        $req->execute();
+
+        $resultat = $req->fetch();
+    }
+
     function getId() {
         return $this->id;
     }
