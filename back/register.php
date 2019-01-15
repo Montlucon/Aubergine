@@ -1,11 +1,18 @@
 <?php
 
+require_once './class/maBDD.php';
+
 /**
- * Gestion de l'inscription des utilisateurs
+ * User registration management
  */
 if (sizeof($_POST) != 0) {
     if (isset($_POST["username"]) && isset($_POST["password"])) {
-        // Do insert here
+        // Insert user in database
+        $req = maBDD::getInstance()->prepare("INSERT INTO users (Username, Password) VALUES (:username, :password)");
+        $req->bindValue(':username', $_POST["username"], PDO::PARAM_STR);
+        $req->bindValue(':password', $_POST["password"], PDO::PARAM_STR);
+        $req->execute();
+
         echo true;
     }
 }

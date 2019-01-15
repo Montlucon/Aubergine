@@ -17,6 +17,7 @@ $(document).ready(function() {
                 }),
                 dataType: "html",
                 success: function(data) {
+                    console.log(data);
                     if(data == 1){
                         // Redirect to login page
                         window.location = "login.html";
