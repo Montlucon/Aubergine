@@ -30,13 +30,12 @@ if(!isset($_SESSION["connected"])) {
 			<b>Enjoy !</b>
 		</p>
 		<div id="my-calendar"></div>
-		Affiche les spans en dessous :
 		<?php 
 			require('back/class/event.php');
 			$datas = new event();
 
 			foreach ($datas->getAllEvents() as $unEvent){
-			echo ' <span id="'. $unEvent->getId().'" class="dateSaved '.$unEvent->getdate().'">
+			echo ' <span id="'. $unEvent->getId().'" class="dateSaved '.$unEvent->getdate().'" style="display: none">
 						'. $unEvent->getDescription() .'
 				   </span>';
 		 

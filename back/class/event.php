@@ -111,5 +111,25 @@ class event {
         $req->execute();
     }
 
+    public function UpdateEvent($id, $title, $description, $date, $isImportante) {
+        
+        $req = maBDD::getInstance()->prepare("UPDATE events(Date, Title, Description, IsImportant) 
+                                              SET Date = :Date, Title = :Title, Description = :Description, IsImportant = :IsImportant
+                                              WHERE Id = :id");
+        $req->bindValue(':Date', $date, PDO::PARAM_STR);
+        $req->bindValue(':Title', $title, PDO::PARAM_STR);
+        $req->bindValue(':Description', $description, PDO::PARAM_STR);
+        $req->bindValue(':IsImportant', $isImportante, PDO::PARAM_STR);
+        $req->bindValue(':Id', $id, PDO::PARAM_STR);
+        $req->execute();
+    }
+
+    public function DeleteEvent($id) {
+        
+        $req = maBDD::getInstance()->prepare("DELETE events 
+                                              WHERE Id = :id");
+        $req->bindValue(':Id', $id, PDO::PARAM_STR);
+        $req->execute();
+    }
     
 }
