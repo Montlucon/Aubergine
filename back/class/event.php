@@ -5,7 +5,7 @@
  *
  * @author Romain
  */
-require_once 'maBDD.php';
+require_once __DIR__ . '/maBDD.php';
 
 class event {
 
@@ -35,6 +35,15 @@ class event {
             $this->setDescription($resultat->Description);
             $this->setIsImportante($resultat->isImportant);
         }
+    }
+
+    public function getEventsMonth() {
+        // Je vais chercher les infos en BDD
+        $req = maBDD::getInstance()->prepare("SELECT * FROM `events` WHERE Date < "2019-02-15" ");
+        $req->bindValue(':id', $id, PDO::PARAM_INT);
+        $req->execute();
+
+        $resultat = $req->fetch();
     }
 
     function getId() {
