@@ -4,7 +4,11 @@ $(document).ready(function() {
         // Fermeture de la pop-up
         $("#eventToAdd").hide();
         // Suppression de l'état orange sur les zones cliquées
-        $( ".toPlan" ).removeClass("toPlan");
+        $(".toPlan").removeClass("toPlan");
+        // Vidage modal
+        $("#dateOfEvent").val("");
+        $("#titleOfEvent").val("");
+        $("#descriptionOfEvent").val("");
     });
     
 	$("#eventToAdd").hide();
@@ -55,6 +59,11 @@ $(document).ready(function() {
                                         $("#eventToAdd").hide();
                                         // reload page
                                         location.reload();
+                                        // Vidage modal
+                    $("#dateOfEvent").val("");
+                    $("#titleOfEvent").val("");
+                    $("#descriptionOfEvent").val("");
+                
                 },
                 error: function() {
                     console.log("error !!!!!");
