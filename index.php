@@ -56,7 +56,7 @@ if(!isset($_SESSION["connected"])) {
 			</select><br><br>
 			<label for="important">Is important</label>
 			<input type="checkbox" id="important" name="important"><br><br>
-			<button class="btn btn-success" id="add_event_btn"></button>
+			<button class="btn btn-success" id="add_event_btn">Save</button>
 		</div>
 	</section>
 </body>
