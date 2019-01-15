@@ -89,7 +89,7 @@ class event {
 
     public function addEvent($title, $description, $date, $isImportante) {
         
-        $req = maBDD::getInstance()->prepare("INSERT INTO events('Date', 'Title', 'Description', 'IsImportant') VALUES 
+        $req = maBDD::getInstance()->prepare("INSERT INTO events(Date, Title, Description, IsImportant) VALUES 
                                               (:Date, :Title, :Description, :IsImportant)");
         $req->bindValue(':Date', $date, PDO::PARAM_STR);
         $req->bindValue(':Title', $title, PDO::PARAM_STR);
@@ -100,14 +100,3 @@ class event {
 
     
 }
-function test($title, $description, $date, $isImportante) {
-        
-    $req = maBDD::getInstance()->prepare("INSERT INTO events('Date', 'Title', 'Description', 'IsImportant') VALUES 
-                                          (:Date, :Title, :Description, :IsImportant)");
-    $req->bindValue(':Date', $date, PDO::PARAM_STR);
-    $req->bindValue(':Title', $title, PDO::PARAM_STR);
-    $req->bindValue(':Description', $description, PDO::PARAM_STR);
-    $req->bindValue(':IsImportant', $isImportante, PDO::PARAM_STR);
-    $req->execute();
-}
-test("titre au pif", "description aleatoire", "2019-01-15", 1);
