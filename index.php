@@ -57,12 +57,19 @@ if(!isset($_SESSION["connected"])) {
                                 <input type="text" id="titleOfEvent" name="titleOfEvent"><br><br>
                                 <label for="descriptionOfEvent">Description</label><br>
                                 <input type="text" id="descriptionOfEvent" name="descriptionOfEvent"><br><br>
-                                <label for="guestsOfEvent">Guests</label><br>
-                                <select id="guestsOfEvent" name="guestsOfEvent" multiple>
-                                    <option id="Prenom1" value="Prenom1">Prenom1</option>
-                                    <option id="Prenom2" value="Prenom2">Prenom2</option>
-                                    <option id="Prenom3" value="Prenom3">Prenom3</option>
-                                </select><br><br>
+								<label for="guestsOfEvent">Guests</label><br>
+								<select id="guestsOfEvent" name="guestsOfEvent" multiple>
+									<?php 
+									require('back/class/user.php');
+									$datas = new user();
+
+									foreach ($datas->getUsers() as $user){
+									echo ' <option id="'. $user->getId().'">
+												' .$user->getUsername().'
+										</option>';
+									}
+									?>
+								</select><br><br>	
                                 <label for="important">Is important</label>
                                 <input type="checkbox" id="important" name="important"><br><br>
 
