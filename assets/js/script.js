@@ -14,7 +14,7 @@ $(document).ready(function() {
 		// alert($(this).attr("id"));
 		$(this).addClass("toPlan");
 		$("#eventToAdd").show().find("#dateOfEvent").attr("val", $(this).attr("id"));
-	})
+	});
 
 	$("#eventToAdd").on("submit", function(){
 		$("#eventToAdd").hide();
@@ -26,10 +26,10 @@ $(document).ready(function() {
 		var dateSaved = $(this).attr("class").split(" ")[1].split("_day")[0];
 		
 		$("#zabuto_calendar_"+currentPrint+"_"+dateSaved).addClass("scheduled");
-	})
+	});
 
-
-	$("#create_event_btn").click(function() {
+	// Button click to add an event
+	$("#add_event_btn").click(function() {
 		var date = $("#dateOfEvent");
 		var title = $("#titleOfEvent");
 		var description = $("#descriptionOfEvent");
@@ -43,6 +43,7 @@ $(document).ready(function() {
                 type: "POST",
                 url: 'back/eventAPI.php',
                 data: ({
+                	function: 'create',
 					date : date.val(),
 					title : title.val(),
 					description : description.val(),
@@ -59,6 +60,4 @@ $(document).ready(function() {
             });
 		}
 	});
-
-	
 });
