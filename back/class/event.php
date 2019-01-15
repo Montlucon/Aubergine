@@ -5,7 +5,7 @@
  *
  * @author Romain
  */
-require_once 'back/class/maBDD.php';
+require_once 'maBDD.php';
 
 class event {
 
