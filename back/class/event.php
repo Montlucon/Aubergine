@@ -44,13 +44,13 @@ class event {
         
         $retour = new ArrayObject();
         // Pour chaque résultat retourné
-        foreach ($resultat->fetchAll() as $value) {
+        foreach ($req->fetchAll() as $value) {
             $monEvent = new event();
-            $monEvent->setId($resultat->Id);
-            $monEvent->setDate($resultat->Date);
-            $monEvent->setTitle($resultat->Title);
-            $monEvent->setDescription($resultat->Description);
-            $monEvent->setIsImportante($resultat->isImportant);
+            $monEvent->setId($value->Id);
+            $monEvent->setDate($value->Date);
+            $monEvent->setTitle($value->Title);
+            $monEvent->setDescription($value->Description);
+            $monEvent->setIsImportante($value->isImportant);
 
            // J'ajoute le nom de l'image
            $retour->append($monEvent);
