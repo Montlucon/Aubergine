@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  lun. 14 jan. 2019 à 16:11
--- Version du serveur :  10.1.37-MariaDB
--- Version de PHP :  7.3.0
+-- Généré le :  mar. 15 jan. 2019 à 09:37
+-- Version du serveur :  10.1.36-MariaDB
+-- Version de PHP :  7.2.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,10 +19,8 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `aubergine`
+-- Base de données :  `projet-scrum`
 --
-CREATE DATABASE IF NOT EXISTS `aubergine` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `aubergine`;
 
 -- --------------------------------------------------------
 
@@ -30,15 +28,20 @@ USE `aubergine`;
 -- Structure de la table `events`
 --
 
-DROP TABLE IF EXISTS `events`;
 CREATE TABLE `events` (
   `Id` int(11) NOT NULL,
-  `BeginDate` date NOT NULL,
-  `EndDate` date NOT NULL,
+  `Date` date NOT NULL,
   `Title` varchar(255) COLLATE utf8_bin NOT NULL,
   `Description` varchar(2000) COLLATE utf8_bin DEFAULT NULL,
   `isImportant` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Déchargement des données de la table `events`
+--
+
+INSERT INTO `events` (`Id`, `Date`, `Title`, `Description`, `isImportant`) VALUES
+(1, '0000-00-00', 'DateBase', 'Import database', 0);
 
 -- --------------------------------------------------------
 
@@ -46,11 +49,17 @@ CREATE TABLE `events` (
 -- Structure de la table `events_users`
 --
 
-DROP TABLE IF EXISTS `events_users`;
 CREATE TABLE `events_users` (
   `Id_event` int(11) NOT NULL,
   `Id_user` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Déchargement des données de la table `events_users`
+--
+
+INSERT INTO `events_users` (`Id_event`, `Id_user`) VALUES
+(1, 1);
 
 -- --------------------------------------------------------
 
@@ -58,7 +67,6 @@ CREATE TABLE `events_users` (
 -- Structure de la table `files`
 --
 
-DROP TABLE IF EXISTS `files`;
 CREATE TABLE `files` (
   `Id` int(11) NOT NULL,
   `Name` varchar(255) COLLATE utf8_bin NOT NULL,
@@ -72,7 +80,6 @@ CREATE TABLE `files` (
 -- Structure de la table `groups`
 --
 
-DROP TABLE IF EXISTS `groups`;
 CREATE TABLE `groups` (
   `Id` int(11) NOT NULL,
   `Name` varchar(255) COLLATE utf8_bin NOT NULL
@@ -84,7 +91,6 @@ CREATE TABLE `groups` (
 -- Structure de la table `groups_users`
 --
 
-DROP TABLE IF EXISTS `groups_users`;
 CREATE TABLE `groups_users` (
   `Id` int(11) NOT NULL,
   `Id_user` int(11) NOT NULL,
@@ -97,12 +103,12 @@ CREATE TABLE `groups_users` (
 -- Structure de la table `notes`
 --
 
-DROP TABLE IF EXISTS `notes`;
 CREATE TABLE `notes` (
   `Id` int(11) NOT NULL,
   `Name` varchar(255) COLLATE utf8_bin NOT NULL,
   `Content` text COLLATE utf8_bin NOT NULL,
-  `Id-event` int(11) NOT NULL
+  `Id_event` int(11) NOT NULL,
+  `Id_user` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- --------------------------------------------------------
@@ -111,14 +117,18 @@ CREATE TABLE `notes` (
 -- Structure de la table `users`
 --
 
-DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `Id` int(11) NOT NULL,
-  `Lastname` varchar(255) COLLATE utf8_bin NOT NULL,
-  `Firstname` varchar(255) COLLATE utf8_bin NOT NULL,
-  `Email` varchar(255) COLLATE utf8_bin NOT NULL,
-  `Password` varchar(255) COLLATE utf8_bin NOT NULL
+  `Password` varchar(255) COLLATE utf8_bin NOT NULL,
+  `Username` varchar(255) COLLATE utf8_bin DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Déchargement des données de la table `users`
+--
+
+INSERT INTO `users` (`Id`, `Password`, `Username`) VALUES
+(1, 'kikoolol', NULL);
 
 --
 -- Index pour les tables déchargées
@@ -162,7 +172,9 @@ ALTER TABLE `groups_users`
 -- Index pour la table `notes`
 --
 ALTER TABLE `notes`
-  ADD PRIMARY KEY (`Id`);
+  ADD PRIMARY KEY (`Id`),
+  ADD KEY `Id_event` (`Id_event`),
+  ADD KEY `Id_user` (`Id_user`);
 
 --
 -- Index pour la table `users`
@@ -178,7 +190,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT pour la table `events`
 --
 ALTER TABLE `events`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT pour la table `files`
@@ -238,7 +250,8 @@ ALTER TABLE `groups_users`
 -- Contraintes pour la table `notes`
 --
 ALTER TABLE `notes`
-  ADD CONSTRAINT `notes_ibfk_1` FOREIGN KEY (`Id`) REFERENCES `events` (`Id`);
+  ADD CONSTRAINT `notes_ibfk_1` FOREIGN KEY (`Id_user`) REFERENCES `users` (`Id`),
+  ADD CONSTRAINT `notes_ibfk_2` FOREIGN KEY (`Id_event`) REFERENCES `events` (`Id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
