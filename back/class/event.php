@@ -5,13 +5,12 @@
  *
  * @author Romain
  */
-require_once 'maBDD.php';
+require_once 'back/class/maBDD.php';
 
 class event {
 
     private $id;
-    private $beginDate;
-    private $endDate;
+    private $date;
     private $title;
     private $description;
     private $isImportante;
@@ -22,19 +21,28 @@ class event {
      * @return event Event
      */
     public function get($id) {
-        
+        // Je vais chercher les infos en BDD
+        $req = maBDD::getInstance()->prepare("SELECT * FROM events WHERE Id = :id");
+        $req->bindValue(':id', $id, PDO::PARAM_INT);
+        $req->execute();
+
+        // J'éclate les informations
+        $resultat = $req->fetch();
+        if ($resultat !== FALSE) {
+            $this->setId($resultat->Id);
+            $this->setDate($resultat->Date);
+            $this->setTitle($resultat->Title);
+            $this->setDescription($resultat->Description);
+            $this->setIsImportante($resultat->isImportant);
+        }
     }
 
     function getId() {
         return $this->id;
     }
 
-    function getBeginDate() {
-        return $this->beginDate;
-    }
-
-    function getEndDate() {
-        return $this->endDate;
+    function getDate() {
+        return $this->date;
     }
 
     function getTitle() {
@@ -53,12 +61,8 @@ class event {
         $this->id = $id;
     }
 
-    function setBeginDate($beginDate) {
-        $this->beginDate = $beginDate;
-    }
-
-    function setEndDate($endDate) {
-        $this->endDate = $endDate;
+    function setDate($date) {
+        $this->date = $date;
     }
 
     function setTitle($title) {
