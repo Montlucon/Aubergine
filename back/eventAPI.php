@@ -23,6 +23,12 @@ require_once __DIR__ . '/class/event.php';
 	// IF DELETE event
 	else if (isset($_POST['function']) && $_POST['function'] == 'delete') {
 		
-	}
+    }
+    // IF GET event by id JSON
+    else if (isset($_GET["id"])){
+        $event = new Event();
+        $event->get($_GET["id"]);
+        echo json_encode($event);
+    }
 
 ?>
