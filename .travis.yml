@@ -37,7 +37,7 @@ before_script:
   # Création de la BDD
   - mysql -e "CREATE DATABASE aubergine;"
   # Injection des tables de base
-  - mysql aubergine < back/database/projet-scrum.sql
+  - mysql aubergine < database/projet-scrum.sql
 
 
 script: 
