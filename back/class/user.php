@@ -21,7 +21,7 @@ class user {
      */
     public function checkCredentials($login, $password) {
         // Check credentials
-        $req = maBDD::getInstance()->prepare("SELECT * FROM users WHERE Email = :login AND Password = :password");
+        $req = maBDD::getInstance()->prepare("SELECT * FROM users WHERE Username = :login AND Password = :password");
         $req->bindValue(':login', $login, PDO::PARAM_STR);
         $req->bindValue(':password', $password, PDO::PARAM_STR);
         $req->execute();

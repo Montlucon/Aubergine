@@ -16,5 +16,33 @@ $(document).ready(function() {
 	$(".zabuto_calendar").find(".calendar-dow").eq("2").find("td").eq("2").addClass("scheduled");
 
 
+	$("#create_event_btn").click(function() {
+		var date = $("#dateOfEvent");
+		var title = $("#titleOfEvent");
+		var description = $("#descriptionOfEvent");
 
+		if(date.attr("val") != "" && title.val() != "" && description.val() != ""){
+			// Format date
+			var dateValue = date.attr("val");
+			dateValue = dateValue.substr(dateValue.lastIndexOf("_") + 1);
+
+			$.ajax({
+                type: "POST",
+                url: 'back/eventAPI.php',
+                data: ({
+					date : date.val(),
+					title : title.val(),
+					description : description.val(),
+					important : $("#important").is(":checked")
+                }),
+                dataType: "html",
+                success: function(data) {
+                    // display data
+                },
+                error: function() {
+                    console.log("error !!!!!");
+                }
+            });
+		}
+	});
 });

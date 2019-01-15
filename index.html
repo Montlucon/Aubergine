@@ -25,22 +25,20 @@
 		</p>
 		<div id="my-calendar"></div>
 		<div class="eventToAdd">
-			<form action="index.php" method="post">
-				<input type="hidden" id="dateOfEvent" name="dateOfEvent"><br>
-				<label for="titleOfEvent">Title of the event</label><br>
-				<input type="text" id="titleOfEvent" name="titleOfEvent"><br><br>
-				<label for="descriptionOfEvent">Description</label><br>
-				<input type="text" id="descriptionOfEvent" name="descriptionOfEvent"><br><br>
-				<label for="guestsOfEvent">Guests</label><br>
-				<select id="guestsOfEvent" name="guestsOfEvent">
-					<option value="1">1</option>
-					<option value="2">2</option>
-					<option value="3">3</option>
-				</select><br>
-				<label for="priorityOfEvent">Priority</label><br>
-				<input type="number" id="priorityOfEvent" name="priorityOfEvent"><br><br>
-				<input type="submit">
-			</form>
+			<input type="hidden" id="dateOfEvent" name="dateOfEvent"><br>
+			<label for="titleOfEvent">Title of the event</label><br>
+			<input type="text" id="titleOfEvent" name="titleOfEvent"><br><br>
+			<label for="descriptionOfEvent">Description</label><br>
+			<input type="text" id="descriptionOfEvent" name="descriptionOfEvent"><br><br>
+			<label for="guestsOfEvent">Guests</label><br>
+			<select id="guestsOfEvent" name="guestsOfEvent">
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+			</select><br><br>
+			<label for="important">Is important</label>
+			<input type="checkbox" id="important" name="important"><br><br>
+			<button class="btn btn-success" id="create_event_btn">Create event</button>
 		</div>
 	</section>
 </body>
