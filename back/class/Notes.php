@@ -37,6 +37,16 @@ class Notes
         }
     }
 
+    public function addNote($name, $content, $idEvent, $idUser) {
+        $req = maBDD::getInstance()->prepare("INSERT INTO notes(Name, Content, Id_event, Id_user) VALUES 
+                                              (:Name, :Content, :Id_event, :Id_user)");
+        $req->bindValue(':Name', $name, PDO::PARAM_STR);
+        $req->bindValue(':Content', $content, PDO::PARAM_STR);
+        $req->bindValue(':Id_event', $idEvent, PDO::PARAM_INT);
+        $req->bindValue(':Id_user', $idUser, PDO::PARAM_INT);
+        $req->execute();
+    }
+
     /**
      * @return mixed
      */
