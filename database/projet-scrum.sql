@@ -21,7 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Base de données :  `projet-scrum`
 --
-
+CREATE DATABASE IF NOT EXISTS `aubergine` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `aubergine`;
 -- --------------------------------------------------------
 
 --
