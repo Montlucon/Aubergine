@@ -77,8 +77,7 @@ $(document).ready(function() {
         $("#dateOfEvent").val("matches[0]");
         $("#descriptionOfEvent").val(monRdv[0].textContent.trim());
         $("#titleOfEvent").val(monRdv[0].title);
-        // TODO
-        $("#important").val("");
+        $("#important").val(monRdv[0].isImportant);
         // TODO
         $("#guest").val("");
         
