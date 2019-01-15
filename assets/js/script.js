@@ -1,7 +1,10 @@
 $(document).ready(function() {
     // Hide modal on click on close button - add event
     $("#closeModal").on("click", function () {
+        // Fermeture de la pop-up
         $("#eventToAdd").hide();
+        // Suppression de l'état orange sur les zones cliquées
+        $( ".toPlan" ).removeClass("toPlan");
     });
     
 	$("#eventToAdd").hide();
