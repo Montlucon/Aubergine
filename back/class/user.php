@@ -74,4 +74,13 @@ class user {
         return $retour;
     }
 
+    public function getIdByUsername($iduser){
+        $req = maBDD::getInstance()->prepare("SELECT id FROM users WHERE Username = :login");
+        $req->bindValue(':login', $iduser, PDO::PARAM_STR);
+        $req->execute();
+        $retour = $req->fetch();
+
+        return $retour;
+    }
+
 }
