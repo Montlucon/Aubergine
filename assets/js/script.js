@@ -10,6 +10,8 @@ $(document).ready(function() {
         $("#titleOfEvent").val("");
         $("#descriptionOfEvent").val("");
         $("#important").prop('checked', false);
+        $("#update_event_btn").hide();
+        $("#add_event_btn").show();
     });
 
     // Hide modal on click on close button - add note
@@ -23,19 +25,18 @@ $(document).ready(function() {
         $("#content").val("");
     });
     
-	$("#eventToAdd").hide();
+    // Cacher le form et bouton update au démarrage
+    $("#eventToAdd").hide();
+    $("#update_event_btn").hide();
+    $("#logout").click(function(){
+        window.location.replace("login.php");
+    })
 	$("#my-calendar").zabuto_calendar({language: "en"});
-
+    
 	$(".zabuto_calendar .calendar-dow td").on("click", function(){
 		// alert($(this).attr("id"));
 		$(this).addClass("toPlan");
 		$("#eventToAdd").show().find("#dateOfEvent").attr("val", $(this).attr("id"));
-	});
-
-	$("#eventToAdd").on("submit", function(){
-		$("#eventToAdd").hide();
-                // Affichage du bouton sauver & masquage du bouton update
-                
 	});
 
 	var currentPrint = $( "div[id^='zabuto_calendar_']" ).first().attr("id").split("zabuto_calendar_")[1];
@@ -110,8 +111,10 @@ $(document).ready(function() {
         // TODO
         $("#guest").val("");
         
+        // Cacher bouton sauver et afficher bouton update
+        $("#update_event_btn").show();
+        $("#add_event_btn").hide();        
     });
-
 
     $("#addNote").on("click", function() {
         $("#addNoteToEvent").show();
@@ -128,14 +131,54 @@ $(document).ready(function() {
                 }),
                 dataType: "html",
                 success: function(data) {
-					// display data
-					console.log(data);
+                    location.reload();
                 },
                 error: function() {
                     console.log("error !!!!!");
                 }
             });
-	});
+    });
+    
+    // Gestion de l'update
+    $("#update_event_btn").click(function () {
+        var date = $("#dateOfEvent");
+        var title = $("#titleOfEvent");
+        var description = $("#descriptionOfEvent");
+        var id = $("#idOfEvent");
+
+        if (date.attr("val") != "" && title.val() != "" && description.val() != "") {
+            // Format date
+            var dateValue = date.attr("val");
+            dateValue = dateValue.substr(dateValue.lastIndexOf("_") + 1);
+            $.ajax({
+                type: "POST",
+                url: 'back/eventAPI.php',
+                data: ({
+                    function: 'update',
+                    id: id.val(),
+                    date: dateValue,
+                    title: title.val(),
+                    description: description.val(),
+                    important: $("#important").is(":checked") ? 1 : 0
+                }),
+                dataType: "html",
+                success: function (data) {
+                    // Dismiss modal
+                    $("#eventToAdd").hide();
+                    // reload page
+                    location.reload();
+                    // Vidage modal
+                    $("#dateOfEvent").val("");
+                    $("#titleOfEvent").val("");
+                    $("#descriptionOfEvent").val("");
+
+                },
+                error: function () {
+                    console.log("error !!!!!");
+                }
+            });
+        }
+    });
 
     // Button click to add a note
     $("#add_note_btn").click(function() {

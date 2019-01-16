@@ -19,7 +19,7 @@ $(document).ready(function() {
                 success: function(data) {
                     if(data == 1){
                         // Redirect to login page
-                        window.location = "login.html";
+                        window.location = "login.php";
                     }
                     else{
                         // Error, display red errors

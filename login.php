@@ -12,6 +12,7 @@
 	<script type="text/javascript" src="assets/js/login.js"></script>
 </head>
 <body>
+	<?php session_start(); session_destroy();?>
 	<div class="container">
 		<div class="row justify-content-md-center div-title">
 			<img src="assets/img/poly-aubergine.jpg" class="rounded float-left aubergine-img" alt="Aubergine">
