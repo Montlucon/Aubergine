@@ -11,6 +11,17 @@ $(document).ready(function() {
         $("#descriptionOfEvent").val("");
         $("#important").prop('checked', false);
     });
+
+    // Hide modal on click on close button - add note
+    $("#closeNoteodal").on("click", function () {
+        // Fermeture de la pop-up
+        $("#addNoteToEvent").hide();
+        // Vidage modal
+        $("#idEvent").val("");
+        $("#idUser").val("");
+        $("#name").val("");
+        $("#content").val("");
+    });
     
 	$("#eventToAdd").hide();
 	$("#my-calendar").zabuto_calendar({language: "en"});
@@ -73,9 +84,16 @@ $(document).ready(function() {
             });
 		}
 	});
+
+	$("td > div").click(function() {
+	    $("#addNote").hide();
+	    $("#removeNote").hide();
+    });
         
     // Gestion du réaffichage d'un événement
     $(".scheduled > div").click(function () {
+        $("#addNote").show();
+        $("#removeNote").show();
         // Récupération de la date courante
         var regExp = /[\d]*-[\d]*-[\d]*/g;
         var matches = regExp.exec(this.id);
@@ -94,6 +112,10 @@ $(document).ready(function() {
         
     });
 
+
+    $("#addNote").on("click", function() {
+        $("#addNoteToEvent").show();
+    });
 
 	// Button click to delete an event
 	$("#delete_event_btn").click(function() {
@@ -115,8 +137,30 @@ $(document).ready(function() {
             });
 	});
 
-    // Button click to delete an event
-    $("#update_note_btn").click(function() {
+    // Button click to add a note
+    $("#add_note_btn").click(function() {
+        $.ajax({
+            type: "POST",
+            url: 'back/note.php',
+            data: ({
+                function: 'create',
+                title: $("#title").val(),
+                content: $("#content").val(),
+                idEvent: $("#idOfEvent").val()
+            }),
+            dataType: "html",
+            success: function(data) {
+                // display data
+                console.log(data);
+            },
+            error: function() {
+                console.log("error !!!!!");
+            }
+        });
+    });
+
+    // Button click to update a note
+    $("#save_note_btn").click(function() {
         $.ajax({
             type: "POST",
             url: 'back/note.php',
@@ -138,8 +182,8 @@ $(document).ready(function() {
         });
     });
 
-    // Button click to delete an event
-    $("#delete_note_btn").click(function() {
+    // Button click to delete a note
+    $("#removeNote").click(function() {
         $.ajax({
             type: "POST",
             url: 'back/note.php',

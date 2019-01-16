@@ -71,7 +71,7 @@ if(!isset($_SESSION["connected"])) {
 								</select><br><br>	
                                 <label for="important">Is important</label>
                                 <input type="checkbox" id="important" name="important"><br><br>
-
+                                <button id="addNote" class="btn btn-default">Add a note</button>
                             </div>
                             <div class="modal-footer">
                                 <button class="btn btn-danger" id="delete_event_btn">Delete</button>
@@ -80,6 +80,32 @@ if(!isset($_SESSION["connected"])) {
                         </div>
                     </div>
                 </div>
+
+        <!-- confirmation modal  -->
+        <div class="modal" id="addNoteToEvent" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Add a note</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="closeNoteodal">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" id="idEvent" name="idEvent"><br>
+                        <input type="hidden" id="idUser" name="idUser"><br>
+                        <label for="name">Title : </label><br>
+                        <input type="text" id="name" name="name"><br><br>
+                        <label for="content">Content</label><br>
+                        <textarea type="text" id="content" name="content"></textarea><br><br>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-danger" id="removeNote">Delete</button>
+                        <button class="btn btn-success" id="add_note_btn">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 	</section>
 </body>
 </html>
