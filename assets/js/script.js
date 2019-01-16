@@ -57,15 +57,14 @@ $(document).ready(function() {
                 }),
                 dataType: "html",
                 success: function(data) {
-                                        // Dismiss modal
-                                        $("#eventToAdd").hide();
-                                        // reload page
-                                        location.reload();
-                                        // Vidage modal
+                    // Dismiss modal
+                    $("#eventToAdd").hide();
+                    // reload page
+                    location.reload();
+                    // Vidage modal
                     $("#dateOfEvent").val("");
                     $("#titleOfEvent").val("");
                     $("#descriptionOfEvent").val("");
-                
                 },
                 error: function() {
                     console.log("error !!!!!");
@@ -93,7 +92,7 @@ $(document).ready(function() {
         $("#guest").val("");
         
     });
-    
+
 
 	// Button click to delete an event
 	$("#delete_event_btn").click(function() {
@@ -114,4 +113,47 @@ $(document).ready(function() {
                 }
             });
 	});
+
+    // Button click to delete an event
+    $("#update_note_btn").click(function() {
+        $.ajax({
+            type: "POST",
+            url: 'back/note.php',
+            data: ({
+                function: 'update',
+                id: $("#idOfNote").val(),
+                title: $("#title").val(),
+                content: $("#content").val(),
+                idEvent: $("#idOfEvent").val()
+            }),
+            dataType: "html",
+            success: function(data) {
+                // display data
+                console.log(data);
+            },
+            error: function() {
+                console.log("error !!!!!");
+            }
+        });
+    });
+
+    // Button click to delete an event
+    $("#delete_note_btn").click(function() {
+        $.ajax({
+            type: "POST",
+            url: 'back/note.php',
+            data: ({
+                function: 'delete',
+                id: $("#idOfNote").val()
+            }),
+            dataType: "html",
+            success: function(data) {
+                // display data
+                console.log(data);
+            },
+            error: function() {
+                console.log("error !!!!!");
+            }
+        });
+    });
 });
