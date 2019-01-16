@@ -3,8 +3,6 @@ session_start();
 if(!isset($_SESSION["connected"])) {
  	header("location:login.html");
 }
-else
-echo $_SESSION["username"];
 ?>
 <!DOCTYPE html>
 <html>
@@ -40,17 +38,7 @@ echo $_SESSION["username"];
                     <input type="text" id="note" name="note" placeholder="" class="form-control input-lg">
                 </div>
             </div>
-            <hr>
-
-            <hr>
-            <div class="control-group">
-                <label class="control-label" for="user">User</label>
-                <div class="controls">
-                    <input type="text" id="user" name="user" value="<?php echo $_SESSION["username"];?>" class="form-control input-lg" readonly>
-                </div>
-            </div>
-            <hr>
-            
+            <hr>            
             <hr>
                     <input type="hidden" id="idevent" name="idevent" value="<?php echo $_GET["idevent"];?>" readonly>
             </div>
