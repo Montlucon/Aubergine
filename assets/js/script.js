@@ -17,6 +17,9 @@ $(document).ready(function() {
     // Cacher le form et bouton update au démarrage
     $("#eventToAdd").hide();
     $("#update_event_btn").hide();
+    $("#logout").click(function(){
+        window.location.replace("login.php");
+    })
 	$("#my-calendar").zabuto_calendar({language: "en"});
     
 	$(".zabuto_calendar .calendar-dow td").on("click", function(){

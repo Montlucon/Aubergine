@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(!isset($_SESSION["connected"])) {
- 	header("location:login.html");
+ 	header("location:login.php");
 }
 ?>
 <html>
@@ -24,7 +24,7 @@ if(!isset($_SESSION["connected"])) {
 </head>
 <body>
 	<section class="mainSection">
-		
+		<input type="button" id="logout" class="btn btn-default btn-sm" value="Logout">
 		<h2>My calendar</h2>
 		<p>Hi guys ! This is your dashboard. From this place, you will be able to check your weekly planning, add new events, and add people to your events ! <br>
 			<b>Enjoy !</b>
