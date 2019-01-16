@@ -106,8 +106,7 @@ $(document).ready(function() {
                 }),
                 dataType: "html",
                 success: function(data) {
-					// display data
-					console.log(data);
+                    location.reload();
                 },
                 error: function() {
                     console.log("error !!!!!");
