@@ -21,6 +21,7 @@ if (sizeof($_POST) != 0) {
             // Session launch
             session_start();
             $_SESSION["connected"] = true;
+            $_SESSION["username"] = $_POST["username"];
         } else {
             // Connexion KO
             $myReturn['status'] = false;
