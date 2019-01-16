@@ -19,9 +19,9 @@ require_once __DIR__ . '/class/event.php';
 	// IF UPDATE event
 	else if (isset($_POST['function']) && $_POST['function'] == 'update') {
             if (isset($_POST["date"]) && isset($_POST["title"]) && isset($_POST["description"]) && isset($_POST["important"])){
-	        // do post update
+			// do post update
 	        $event = new Event();
-                $event->updateEvent($_POST["id"], $_POST["title"], $_POST["description"], $_POST["date"], $_POST["important"]);
+			$event->updateEvent($_POST["id"], $_POST["title"], $_POST["description"], $_POST["date"], $_POST["important"]);
 	    }
 	}
 	// IF DELETE event

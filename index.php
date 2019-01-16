@@ -76,6 +76,7 @@ if(!isset($_SESSION["connected"])) {
                             <div class="modal-footer">
                                 <button class="btn btn-danger" id="delete_event_btn">Delete</button>
                                 <button class="btn btn-success" id="add_event_btn">Save</button>
+                                <button class="btn btn-success" id="update_event_btn">Update</button>
                             </div>
                         </div>
                     </div>
