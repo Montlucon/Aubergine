@@ -82,7 +82,6 @@ $(document).ready(function() {
 
         // Récupération de l'élément avec la classe à notre date
         var monRdv = $("." + matches[0]);
-        console.log(monRdv);
 
         // Insertion des valeurs dans la modal
         $("#dateOfEvent").val("matches[0]");
@@ -95,4 +94,24 @@ $(document).ready(function() {
         
     });
     
+
+	// Button click to delete an event
+	$("#delete_event_btn").click(function() {
+			$.ajax({
+                type: "POST",
+                url: 'back/eventAPI.php',
+                data: ({
+					function: 'delete',
+					id: $("#idOfEvent").val(),
+                }),
+                dataType: "html",
+                success: function(data) {
+					// display data
+					console.log(data);
+                },
+                error: function() {
+                    console.log("error !!!!!");
+                }
+            });
+	});
 });
