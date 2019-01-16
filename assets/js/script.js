@@ -22,6 +22,8 @@ $(document).ready(function() {
 
 	$("#eventToAdd").on("submit", function(){
 		$("#eventToAdd").hide();
+                // Affichage du bouton sauver & masquage du bouton update
+                
 	});
 
 	var currentPrint = $( "div[id^='zabuto_calendar_']" ).first().attr("id").split("zabuto_calendar_")[1];
@@ -87,8 +89,10 @@ $(document).ready(function() {
         $("#descriptionOfEvent").val(monRdv[0].textContent.trim());
         $("#titleOfEvent").val(monRdv[0].title);
         $("#important").val(monRdv[0].isImportant);
+        $("#idOfEvent").val(monRdv[0].id);
         // TODO
         $("#guest").val("");
         
     });
+    
 });

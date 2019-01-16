@@ -51,6 +51,7 @@ if(!isset($_SESSION["connected"])) {
                             </div>
                             <div class="modal-body">
                                 <input type="hidden" id="dateOfEvent" name="dateOfEvent"><br>
+                                <input type="hidden" id="idOfEvent" name="idOfEvent"><br>
                                 <label for="titleOfEvent">Title of the event</label><br>
                                 <input type="text" id="titleOfEvent" name="titleOfEvent"><br><br>
                                 <label for="descriptionOfEvent">Description</label><br>
