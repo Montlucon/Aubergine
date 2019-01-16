@@ -9,6 +9,7 @@ $(document).ready(function() {
         $("#dateOfEvent").val("");
         $("#titleOfEvent").val("");
         $("#descriptionOfEvent").val("");
+        $("#important").prop('checked', false);
     });
     
 	$("#eventToAdd").hide();
@@ -57,11 +58,11 @@ $(document).ready(function() {
                 }),
                 dataType: "html",
                 success: function(data) {
-                                        // Dismiss modal
-                                        $("#eventToAdd").hide();
-                                        // reload page
-                                        location.reload();
-                                        // Vidage modal
+                    // Dismiss modal
+                    $("#eventToAdd").hide();
+                    // reload page
+                    location.reload();
+                    // Vidage modal
                     $("#dateOfEvent").val("");
                     $("#titleOfEvent").val("");
                     $("#descriptionOfEvent").val("");
@@ -87,7 +88,7 @@ $(document).ready(function() {
         $("#dateOfEvent").val("matches[0]");
         $("#descriptionOfEvent").val(monRdv[0].textContent.trim());
         $("#titleOfEvent").val(monRdv[0].title);
-        $("#important").val(monRdv[0].isImportant);
+        $("#important").prop('checked', $(monRdv[0]).attr("isImportant") == 1);
         $("#idOfEvent").val(monRdv[0].id);
         // TODO
         $("#guest").val("");
