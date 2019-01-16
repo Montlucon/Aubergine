@@ -144,13 +144,14 @@ $(document).ready(function() {
             url: 'back/note.php',
             data: ({
                 function: 'create',
-                title: $("#title").val(),
+                name: $("#name").val(),
                 content: $("#content").val(),
                 idEvent: $("#idOfEvent").val()
             }),
             dataType: "html",
             success: function(data) {
                 // display data
+                $("#addNoteToEvent").hide();
                 console.log(data);
             },
             error: function() {
@@ -167,7 +168,7 @@ $(document).ready(function() {
             data: ({
                 function: 'update',
                 id: $("#idOfNote").val(),
-                title: $("#title").val(),
+                name: $("#name").val(),
                 content: $("#content").val(),
                 idEvent: $("#idOfEvent").val()
             }),

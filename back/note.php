@@ -3,6 +3,7 @@ session_start();
 require_once __DIR__ . '/class/Notes.php';
 require_once __DIR__ . '/class/user.php';
 
+
 /*
  * Handle POST requests for the notes
  */
@@ -14,27 +15,25 @@ require_once __DIR__ . '/class/user.php';
 
  	// If ADD note
     if(isset($_POST['function']) && $_POST['function'] == 'create'){
-            if (isset($_POST["name"]) && isset($_POST["note"]) && isset($_SESSION["username"]) && isset($_POST["idevent"])) {
-        
+            if (isset($_POST["name"]) && isset($_POST["content"]) && isset($_POST["idEvent"])) {
+
                 $user = new user();
-                $user->GetIdByUsername($_SESSION["username"]);
+                $user->setId($user->GetIdByUsername($_SESSION["username"]));
 
                 $note = new Notes();
-                $note->addNote($_POST["name"], $_POST["content"], $_POST["idevent"], $user);
-
+                $note->addNote($_POST["name"], $_POST["content"], $_POST["idEvent"], $user);
             }
     }
     
 	// IF UPDATE note
 	else if (isset($_POST['function']) && $_POST['function'] == 'update') {
-        if (isset($_POST["id"]) && isset($_POST["name"]) && isset($_POST["note"]) && isset($_SESSION["username"]) && isset($_POST["idevent"])) {
+        if (isset($_POST["id"]) && isset($_POST["name"]) && isset($_POST["note"]) && isset($_POST["idEvent"])) {
         
             $user = new user();
-            $user->GetIdByUsername($_SESSION["username"]);
+            $user->setId($user->GetIdByUsername($_SESSION["username"]));
 
             $note = new Notes();
-            $note->updateNote($_POST["id"], $_POST["name"], $_POST["content"], $_POST["idevent"], $user);
-
+            $note->updateNote($_POST["id"], $_POST["name"], $_POST["content"], $_POST["idEvent"], $user);
         }
 		
 	}
