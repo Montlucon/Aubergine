@@ -107,7 +107,7 @@ class event {
         $req->bindValue(':Date', $date, PDO::PARAM_STR);
         $req->bindValue(':Title', $title, PDO::PARAM_STR);
         $req->bindValue(':Description', $description, PDO::PARAM_STR);
-        $req->bindValue(':IsImportant', $isImportante, PDO::PARAM_STR);
+        $req->bindValue(':IsImportant', $isImportante, PDO::PARAM_INT);
         $req->execute();
     }
 
