@@ -72,7 +72,7 @@ $(document).ready(function() {
 		}
 	});
         
-    // Gestion de l'update
+    // Gestion du réaffichage d'un événement
     $(".scheduled > div").click(function () {
         // Récupération de la date courante
         var regExp = /[\d]*-[\d]*-[\d]*/g;
