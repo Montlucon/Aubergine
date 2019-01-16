@@ -126,9 +126,9 @@ class event {
 
     public function DeleteEvent($id) {
         
-        $req = maBDD::getInstance()->prepare("DELETE events 
+        $req = maBDD::getInstance()->prepare("DELETE FROM events 
                                               WHERE Id = :Id");
-        $req->bindValue(':Id', $id, PDO::PARAM_STR);
+        $req->bindValue(':Id', $id, PDO::PARAM_INT);
         $req->execute();
     }
     

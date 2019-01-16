@@ -51,6 +51,7 @@ if(!isset($_SESSION["connected"])) {
                             </div>
                             <div class="modal-body">
                                 <input type="hidden" id="dateOfEvent" name="dateOfEvent"><br>
+                                <input type="hidden" id="idOfEvent" name="idOfEvent"><br>
                                 <label for="titleOfEvent">Title of the event</label><br>
                                 <input type="text" id="titleOfEvent" name="titleOfEvent"><br><br>
                                 <label for="descriptionOfEvent">Description</label><br>
@@ -73,9 +74,15 @@ if(!isset($_SESSION["connected"])) {
 
                             </div>
                             <div class="modal-footer">
+<<<<<<< Updated upstream
                                 <button class="btn btn-danger" id="delete_event_btn">Delete</button>
                                 <button class="btn btn-success" id="add_event_btn">Save</button>
                             </div>
+=======
+								<button class="btn btn-success" id="add_event_btn">Save</button> <button class="btn btn-danger" id="delete_event_btn">Delete</button>
+							</div>
+							
+>>>>>>> Stashed changes
                         </div>
                     </div>
                 </div>

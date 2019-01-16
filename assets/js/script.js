@@ -22,6 +22,8 @@ $(document).ready(function() {
 
 	$("#eventToAdd").on("submit", function(){
 		$("#eventToAdd").hide();
+                // Affichage du bouton sauver & masquage du bouton update
+                
 	});
 
 	var currentPrint = $( "div[id^='zabuto_calendar_']" ).first().attr("id").split("zabuto_calendar_")[1];
@@ -72,7 +74,7 @@ $(document).ready(function() {
 		}
 	});
         
-    // Gestion de l'update
+    // Gestion du réaffichage d'un événement
     $(".scheduled > div").click(function () {
         // Récupération de la date courante
         var regExp = /[\d]*-[\d]*-[\d]*/g;
@@ -80,15 +82,36 @@ $(document).ready(function() {
 
         // Récupération de l'élément avec la classe à notre date
         var monRdv = $("." + matches[0]);
-        console.log(monRdv);
 
         // Insertion des valeurs dans la modal
         $("#dateOfEvent").val("matches[0]");
         $("#descriptionOfEvent").val(monRdv[0].textContent.trim());
         $("#titleOfEvent").val(monRdv[0].title);
         $("#important").val(monRdv[0].isImportant);
+        $("#idOfEvent").val(monRdv[0].id);
         // TODO
         $("#guest").val("");
         
     });
+    
+
+	// Button click to delete an event
+	$("#delete_event_btn").click(function() {
+			$.ajax({
+                type: "POST",
+                url: 'back/eventAPI.php',
+                data: ({
+					function: 'delete',
+					id: $("#idOfEvent").val(),
+                }),
+                dataType: "html",
+                success: function(data) {
+					// display data
+					console.log(data);
+                },
+                error: function() {
+                    console.log("error !!!!!");
+                }
+            });
+	});
 });
